@@ -107,6 +107,7 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		pan.setBackground(new Color(0,255,255));
 		this.add(pan);
 		this.add(visualisationAgenda);
+		visualisationAgenda.setText(agenda.toString());
 		visualisationAgenda.setEditable(false);
 	}
 

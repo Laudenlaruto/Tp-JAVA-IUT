@@ -11,6 +11,7 @@ public class PanelFils extends JPanel{
 	PanelEvenement panelEvenement = new PanelEvenement(a);
 	PanelCalendrier panelCalendrier = new PanelCalendrier(panelEvenement);
 	public PanelFils (){
+		a.ajout("0", new Evt(new Date(), "Today","Home"));
 		this.setLayout(new GridLayout(0,2));
 		this.add(panelCalendrier);
 		this.add(panelEvenement);
