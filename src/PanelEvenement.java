@@ -6,6 +6,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -109,7 +110,7 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		agenda = (Agenda)Fichier.lecture(file);
 		if (agenda != null)
 				visualisationAgenda.setText(Fichier.lecture(file).toString());
-
+		
 	}
 
 	

@@ -40,4 +40,15 @@ public class Fichier  {
 				
 			}
 		}
+		public static void reset(File parFichier){
+			ObjectOutputStream flux = null;
+			try{
+				flux = new ObjectOutputStream(new FileOutputStream(parFichier));
+				flux.reset();
+				ecriture(parFichier,new Agenda());
+			}
+			catch(IOException parExc){
+				
+			}
+		}
 }
