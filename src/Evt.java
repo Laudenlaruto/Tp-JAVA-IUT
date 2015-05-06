@@ -1,4 +1,6 @@
-public class Evt
+import java.io.Serializable;
+
+public class Evt implements Serializable
 {
 private Date chDate;
 private String chTitre;

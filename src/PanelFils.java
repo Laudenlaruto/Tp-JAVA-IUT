@@ -7,10 +7,9 @@ import javax.swing.JTextArea;
 
 
 public class PanelFils extends JPanel{
-	Agenda a = new Agenda();
 	
 	public PanelFils (){
-		PanelEvenement panelEvenement = new PanelEvenement(a);
+		PanelEvenement panelEvenement = new PanelEvenement();
 		PanelCalendrier panelCalendrier = new PanelCalendrier(panelEvenement);
 		this.setLayout(new GridLayout(0,2));
 		this.add(panelCalendrier);

@@ -5,19 +5,19 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 
 public class PanelEvenement extends JPanel implements ActionListener {
 	JLabel labelDate;
 	JButton ajout = new JButton("+");
-	Agenda agenda;   
+	Agenda agenda = new Agenda();   
 	JLabel titre = new JLabel("Titre");
 	JTextArea atitre = new JTextArea();
 	JLabel lieu = new JLabel("Lieu");
@@ -39,8 +39,8 @@ public class PanelEvenement extends JPanel implements ActionListener {
 	GridBagConstraints c = new GridBagConstraints(); 
 	JTextArea visualisationAgenda = new JTextArea();
 	Date dateLocal = new Date();
-	public PanelEvenement(Agenda a){
-		agenda = a ;
+	File file = new File("Agenda");
+	public PanelEvenement(){
 		Date today = new Date();
 		this.setLayout(new GridLayout(0,2));
 		pan.setLayout(Gridbag);
@@ -106,7 +106,9 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		pan.setBackground(new Color(0,255,255));
 		this.add(pan);		visualisationAgenda.setEditable(false);
 		this.add(visualisationAgenda);
-		visualisationAgenda.setText(a.toString());
+		agenda = (Agenda)Fichier.lecture(file);
+		if (agenda != null)
+				visualisationAgenda.setText(Fichier.lecture(file).toString());
 
 	}
 
@@ -120,7 +122,8 @@ public class PanelEvenement extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent parEvt) {
 		if (parEvt.getSource() == ajout){
 			if ( atitre.getText().length() !=0 && alieu.getText().length() !=0  ){
-				agenda.ajout(dateLocal.toString(),new Evt(dateLocal, atitre.getText(), alieu.getText()));
+				agenda.ajout(dateLocal.toString(),new Evt(dateLocal, atitre.getText(),alieu.getText()));
+				Fichier.ecriture(file, agenda);
 			}
 		}
 		visualisationAgenda.setText(agenda.toString());

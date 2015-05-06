@@ -1,9 +1,10 @@
- import java.text.SimpleDateFormat;
+ import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
 
-public class Date
+public class Date implements Serializable
 {
 	private int chJour; //Champ&Attribut
 	private int chMois;

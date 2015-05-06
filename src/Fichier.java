@@ -20,7 +20,7 @@ public class Fichier  {
 			System.err.println(parExc.toString());
 			System.exit(1);
 		} catch (IOException e) {
-			System.err.println("Erreur lecture fichier"+ e.toString());
+			System.err.println("Erreur lecture fichier "+ e.toString());
 			System.exit(1);
 		} 
 		return objetLu;

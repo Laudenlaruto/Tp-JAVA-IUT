@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.*;
 import java.util.Map.Entry;
 
 
-public class Agenda
+public class Agenda implements Serializable
 {
 	
 	private HashMap<String,ArrayList<Evt>> chMap;
@@ -14,24 +15,23 @@ public class Agenda
 	public String toString()
 	{
 		String message = new String();
-		/*Set<Entry<String,ArrayList<Evt>>> entree = chMap.entrySet();
+		Set<Entry<String,ArrayList<Evt>>> entree = chMap.entrySet();
 		Iterator <Entry<String,ArrayList<Evt>>> iterator = entree.iterator();
 		while (iterator.hasNext())
 		{
-			//message+=iterator.next()+"\n";
-			message += 
-		}*/
+			message+=iterator.next()+"\n";
+		}
 		
 		Set <String> mesCles = chMap.keySet();
 		for (String cle :mesCles)
 		{
 			//message += cle + " : " + chMap.get(cle);
-			ArrayList liste = chMap.get(cle); 
+			/*ArrayList liste = chMap.get(cle); 
 			for (int i=0; i<liste.size(); i++)
 			{
 				Evt e = (Evt)liste.get(i);
 				message +=  cle  + e.toString() +" \n";
-			}
+			}*/
 		}
 		return(message);
 	}
@@ -49,4 +49,3 @@ public class Agenda
 		}
 	}
 }
-//caca
