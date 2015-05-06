@@ -39,7 +39,6 @@ public class PanelEvenement extends JPanel implements ActionListener {
 	GridBagConstraints c = new GridBagConstraints(); 
 	JTextArea visualisationAgenda = new JTextArea();
 	Date dateLocal = new Date();
-	int i =1;
 	public PanelEvenement(Agenda a){
 		agenda = a ;
 		Date today = new Date();
@@ -121,8 +120,7 @@ public class PanelEvenement extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent parEvt) {
 		if (parEvt.getSource() == ajout){
 			if ( atitre.getText().length() !=0 && alieu.getText().length() !=0  ){
-				agenda.ajout(String.valueOf(i),new Evt(dateLocal, atitre.getText(), alieu.getText()));
-				i ++;
+				agenda.ajout(dateLocal.toString(),new Evt(dateLocal, atitre.getText(), alieu.getText()));
 			}
 		}
 		visualisationAgenda.setText(agenda.toString());

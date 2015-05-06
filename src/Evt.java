@@ -33,7 +33,7 @@ private static int chNbr = 0;
 		}
 		public String toString()
 		{
-	return ( chDate.toString() +" \n"+ chTitre + " - " + chLieu);
+	return ("\n"+ chTitre + " - " + chLieu);
 		}
 		public String getTitre()
 		{

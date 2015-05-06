@@ -30,7 +30,7 @@ public class Agenda
 			for (int i=0; i<liste.size(); i++)
 			{
 				Evt e = (Evt)liste.get(i);
-				message +=  cle +" - " +e.toString() +" \n";
+				message +=  cle  + e.toString() +" \n";
 			}
 		}
 		return(message);
