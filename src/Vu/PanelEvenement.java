@@ -7,7 +7,6 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -126,6 +125,7 @@ public class PanelEvenement extends JPanel implements ActionListener {
 	}
 
 
+	@Override
 	public void actionPerformed(ActionEvent parEvt) {
 		if (parEvt.getSource() == ajout){
 			if ( atitre.getText().length() !=0 && alieu.getText().length() !=0  ){

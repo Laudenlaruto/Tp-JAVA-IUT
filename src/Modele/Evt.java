@@ -34,6 +34,7 @@ private static int chNbr = 0;
 		{
 			return chNbr;
 		}
+		@Override
 		public String toString()
 		{
 	return ("\n"+ chTitre + " - " + chLieu);

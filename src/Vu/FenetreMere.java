@@ -1,9 +1,5 @@
 package Vu;
-import java.awt.*;
-
 import javax.swing.*;
-
-import java.awt.event.*;
 
 
 public class FenetreMere extends JFrame 

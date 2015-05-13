@@ -16,7 +16,7 @@ public class Fichier  {
 		
 		try{
 			flux = new ObjectInputStream(new FileInputStream(parFichier));
-			objetLu = (Object)flux.readObject();
+			objetLu = flux.readObject();
 			flux.close();
 		}
 		catch(ClassNotFoundException parExc) {

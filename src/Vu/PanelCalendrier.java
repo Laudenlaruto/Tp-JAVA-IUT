@@ -67,6 +67,7 @@ public class PanelCalendrier extends JPanel implements ActionListener
 		index = dateAuj.get(Calendar.MONTH);
 		NomMois.setText(Titres[index]);
 	}
+	@Override
 	public void actionPerformed (ActionEvent parEvt)
 	{ 
 		if (parEvt.getSource() == bouton){
