@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import Fichier.Fichiier;
@@ -111,7 +112,17 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		
 		pan.setBackground(new Color(0,255,255));
 		this.add(pan);		visualisationAgenda.setEditable(false);
-		this.add(visualisationAgenda);
+		//this.add(visualisationAgenda);
+		
+		JScrollPane table = new JScrollPane(new TableDuMois());
+		this.add(table);
+		
+		
+		
+		
+		
+		
+		
 		agenda = (Agenda)Fichiier.lecture(file);
 		if (agenda != null)
 				visualisationAgenda.setText(Fichiier.lecture(file).toString());

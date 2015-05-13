@@ -1,37 +1,52 @@
 package Vu;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import Modele.BoutonDate;
 import Modele.Date;
 import Modele.ExceptAgenda;
 
-import java.awt.event.*;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 
 public class PanelCalendrier extends JPanel implements ActionListener
 {
+	
 	int index =0;
 	JPanel PanelNorth = new JPanel();
 	JPanel PanelCentre = new JPanel();
 	JPanel PanelSud = new JPanel();
+	JPanel PanelCal = new JPanel();
+	
+	
 	JButton bouton = new JButton("Précedent");
 	JButton bouton2 = new JButton("Suivant");
 	GregorianCalendar dateAuj = new GregorianCalendar();
+	JLabel chAnnee = new JLabel(String.valueOf(dateAuj.get(Calendar.YEAR)));
+	
 	CardLayout Diapo = new CardLayout(25,25);
 	String Titres[] =  {"Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Decembre"};
 	BoutonDate boutonDates;
 	JLabel NomMois = new JLabel(Titres[index]);
 	BoutonDate oldBouton = null;
 	PanelEvenement panelEvementLocal;
+	Font font = new Font(Font.SERIF,Font.PLAIN,80);
 	public PanelCalendrier(PanelEvenement parPaneEve)
 	{  
 		panelEvementLocal = parPaneEve;
-		this.setLayout( new BorderLayout());
-		this.add(PanelCentre, BorderLayout.CENTER);
+		this.setLayout(new GridLayout(0,2));
+		PanelCal.setLayout( new BorderLayout());
+		//this.add(PanelCentre, BorderLayout.CENTER);
+		
 		PanelCentre.setLayout(Diapo);
 		
 		for (int i = 1; i <= Titres.length; i++) {
@@ -54,18 +69,24 @@ public class PanelCalendrier extends JPanel implements ActionListener
 		}
 		
 		
-		this.add(PanelNorth,BorderLayout.NORTH);
+		PanelCal.add(PanelNorth,BorderLayout.NORTH);
 		PanelNorth.add(NomMois);
 		PanelSud.add(bouton);
 		PanelSud.add(bouton2);
 		bouton.addActionListener(this);
 		bouton2.addActionListener(this);
-		this.add(PanelSud, BorderLayout.SOUTH);
+		PanelCal.add(PanelSud, BorderLayout.SOUTH);
 		PanelSud.setBackground( new Color ( 0,255,255));
 		PanelNorth.setBackground( new Color ( 0,255,255));
 		Diapo.show(PanelCentre,Titres[dateAuj.get(Calendar.MONTH)]);
 		index = dateAuj.get(Calendar.MONTH);
 		NomMois.setText(Titres[index]);
+		chAnnee.setFont(font);
+		chAnnee.setHorizontalAlignment(JLabel.CENTER);
+		this.setBackground(new Color(0,255,255));
+		this.add(chAnnee);
+		PanelCal.add(PanelCentre);
+		this.add(PanelCal);
 	}
 	public void actionPerformed (ActionEvent parEvt)
 	{ 
