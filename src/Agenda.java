@@ -1,4 +1,4 @@
-import java.io.Serializable;
+ import java.io.Serializable;
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -16,18 +16,16 @@ public class Agenda implements Serializable
 	{
 		String message = new String();
 		for (String Cle : chMap.keySet()) {
-			List<Evt> L = chMap.get(Cle);
 			message += Cle ;
+			List<Evt> L = chMap.get(Cle);
 			for (Evt evt : L) {
 				message +=  evt.toString();
 			}
 			message += "\n";
 		} 
 		
-		
-		
 		/*String message = new String();
-		Set<Entry<String,ArrayList<Evt>>> entree = chMap.entrySet();
+  		Set<Entry<String,ArrayList<Evt>>> entree = chMap.entrySet();
 		Iterator <Entry<String,ArrayList<Evt>>> iterator = entree.iterator();
 		while (iterator.hasNext())
 		{
