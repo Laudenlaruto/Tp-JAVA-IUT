@@ -20,7 +20,6 @@ public class PanelFils extends JPanel{
 		c.gridy = 1;
 		c.gridwidth = 2;
 		this.add(panelEvenement,c);
-		this.setBackground(new Color(0,255,255));
 	}
 
 }

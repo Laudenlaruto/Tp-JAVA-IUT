@@ -76,14 +76,11 @@ public class PanelCalendrier extends JPanel implements ActionListener
 		bouton.addActionListener(this);
 		bouton2.addActionListener(this);
 		PanelCal.add(PanelSud, BorderLayout.SOUTH);
-		PanelSud.setBackground( new Color ( 0,255,255));
-		PanelNorth.setBackground( new Color ( 0,255,255));
 		Diapo.show(PanelCentre,Titres[dateAuj.get(Calendar.MONTH)]);
 		index = dateAuj.get(Calendar.MONTH);
 		NomMois.setText(Titres[index]);
 		chAnnee.setFont(font);
 		chAnnee.setHorizontalAlignment(JLabel.CENTER);
-		this.setBackground(new Color(0,255,255));
 		this.add(chAnnee);
 		PanelCal.add(PanelCentre);
 		this.add(PanelCal);
