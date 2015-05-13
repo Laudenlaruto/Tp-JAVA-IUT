@@ -8,14 +8,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.border.Border;
 
-import Fichier.Fichiier;
+import Fichier.Fichier;
 import Modele.Agenda;
 import Modele.Date;
 import Modele.Evt;
@@ -62,14 +64,18 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		c.gridwidth = 1;
 		c.gridx = 4;
 		pan.add(ajout,c);
+		ajout.setBackground(new Color(255,51,51));
 		ajout.addActionListener(this);
 		//---------
+		
+		Border border = BorderFactory.createLineBorder(Color.BLUE, 1);
 		c.gridy = 1;
 		c.gridx = 0;
 		c.gridwidth = 2;
 		pan.add(titre,c);
 		c.gridx = 2;
 		c.gridwidth = 3;
+		atitre.setBorder(border);
 		pan.add(atitre,c);
 		//--------
 		c.gridy = 2;
@@ -78,8 +84,9 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		pan.add(lieu,c);
 		c.gridx = 2;
 		c.gridwidth = 3;
+		alieu.setBorder(border);
 		pan.add(alieu,c);
-		//------
+		//------------------------------------------------------------
 		c.gridwidth = 1;
 		c.gridy = 3;
 		c.gridx = 0;
@@ -108,6 +115,7 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		c.gridy = 6;
 		c.gridheight=3;
 		c.gridwidth=5;
+		ades.setBorder(border);
 		pan.add(ades,c);
 		
 		this.add(pan);		visualisationAgenda.setEditable(false);
@@ -122,9 +130,9 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		
 		
 		
-		agenda = (Agenda)Fichiier.lecture(file);
+		agenda = (Agenda)Fichier.lecture(file);
 		if (agenda != null)
-				visualisationAgenda.setText(Fichiier.lecture(file).toString());
+				visualisationAgenda.setText(Fichier.lecture(file).toString());
 	
 	}
 
@@ -139,7 +147,7 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		if (parEvt.getSource() == ajout){
 			if ( atitre.getText().length() !=0 && alieu.getText().length() !=0  ){
 				agenda.ajout(dateLocal.toString(),new Evt(dateLocal, atitre.getText(),alieu.getText()));
-				Fichiier.ecriture(file, agenda);
+				Fichier.ecriture(file, agenda);
 			}
 		}
 		visualisationAgenda.setText(agenda.toString());
