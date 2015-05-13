@@ -1,6 +1,8 @@
 package Modele;
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 public class Agenda implements Serializable
@@ -12,7 +14,6 @@ public class Agenda implements Serializable
 		chMap = new HashMap<String,ArrayList<Evt>>();
 		
 	}
-	@Override
 	public String toString()
 	{
 		String message = new String();

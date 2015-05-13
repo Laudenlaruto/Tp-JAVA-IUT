@@ -15,7 +15,7 @@ private static int chNbr = 0;
 			chLieu = parLieu;
 			chNbr ++;
 		}
-		public Evt ()
+	/*	public Evt ()
 		{
 			chDate = new Date();
 			chTitre = Clavier.lireString();
@@ -29,12 +29,11 @@ private static int chNbr = 0;
 			//System.out.println("Le lieu:");
 			String lieu = "lieu";
 			return new Evt(d,titre,lieu);
-		}
+		}*/
 		public int getNbr()
 		{
 			return chNbr;
 		}
-		@Override
 		public String toString()
 		{
 	return ("\n"+ chTitre + " - " + chLieu);

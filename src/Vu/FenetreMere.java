@@ -1,12 +1,10 @@
 package Vu;
-import javax.swing.*;
-
+import javax.swing.JFrame;
 
 public class FenetreMere extends JFrame 
 {
 	public static void main(String[] args)
 	{
-		
 		new FenetreMere("Calendrier");
 	}
 	
@@ -21,4 +19,3 @@ public class FenetreMere extends JFrame
 	}
 	
 }
-

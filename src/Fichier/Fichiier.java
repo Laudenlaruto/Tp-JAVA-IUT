@@ -9,14 +9,15 @@ import java.io.ObjectOutputStream;
 import Modele.Agenda;
 
 
-public class Fichier  {
+
+public class Fichiier  {
 	public static Object lecture(File parFichier){
 		ObjectInputStream flux;
 		Object objetLu = null;
 		
 		try{
 			flux = new ObjectInputStream(new FileInputStream(parFichier));
-			objetLu = flux.readObject();
+			objetLu = (Object)flux.readObject();
 			flux.close();
 		}
 		catch(ClassNotFoundException parExc) {

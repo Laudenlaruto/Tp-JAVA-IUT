@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import Fichier.Fichier;
+import Fichier.Fichiier;
 import Modele.Agenda;
 import Modele.Date;
 import Modele.Evt;
@@ -112,10 +112,10 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		pan.setBackground(new Color(0,255,255));
 		this.add(pan);		visualisationAgenda.setEditable(false);
 		this.add(visualisationAgenda);
-		agenda = (Agenda)Fichier.lecture(file);
+		agenda = (Agenda)Fichiier.lecture(file);
 		if (agenda != null)
-				visualisationAgenda.setText(Fichier.lecture(file).toString());
-		
+				visualisationAgenda.setText(Fichiier.lecture(file).toString());
+	
 	}
 
 	
@@ -125,12 +125,11 @@ public class PanelEvenement extends JPanel implements ActionListener {
 	}
 
 
-	@Override
 	public void actionPerformed(ActionEvent parEvt) {
 		if (parEvt.getSource() == ajout){
 			if ( atitre.getText().length() !=0 && alieu.getText().length() !=0  ){
 				agenda.ajout(dateLocal.toString(),new Evt(dateLocal, atitre.getText(),alieu.getText()));
-				Fichier.ecriture(file, agenda);
+				Fichiier.ecriture(file, agenda);
 			}
 		}
 		visualisationAgenda.setText(agenda.toString());

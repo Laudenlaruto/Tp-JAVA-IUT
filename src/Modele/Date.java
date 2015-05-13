@@ -1,5 +1,6 @@
 package Modele;
  import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.StringTokenizer;
@@ -70,7 +71,6 @@ public class Date implements Serializable
 			return new Date(J,M,A);
 		}	
 		
-	@Override
 	public String toString()
 	{
 		return( chJourSemaine +" "+chJour+" "+chMoisAnnee+" "+chAn);
