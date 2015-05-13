@@ -1,3 +1,4 @@
+package Vu;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,6 +14,11 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
+import Fichier.Fichier;
+import Modele.Agenda;
+import Modele.Date;
+import Modele.Evt;
 
 
 public class PanelEvenement extends JPanel implements ActionListener {

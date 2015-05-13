@@ -1,3 +1,4 @@
+package Modele;
 // auteur : Claude Delannoy - Programmer en Java, éditions Eyrolles
 
 import java.io.*;

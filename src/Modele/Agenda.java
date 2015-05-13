@@ -1,3 +1,4 @@
+package Modele;
 import java.io.Serializable;
 import java.util.*;
 import java.util.Map.Entry;

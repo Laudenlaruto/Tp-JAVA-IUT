@@ -1,6 +1,11 @@
+package Vu;
 import java.awt.*;
 
 import javax.swing.*;
+
+import Modele.BoutonDate;
+import Modele.Date;
+import Modele.ExceptAgenda;
 
 import java.awt.event.*;
 import java.util.Calendar;

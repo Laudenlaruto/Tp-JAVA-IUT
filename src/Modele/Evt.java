@@ -1,3 +1,4 @@
+package Modele;
 import java.io.Serializable;
 
 public class Evt implements Serializable

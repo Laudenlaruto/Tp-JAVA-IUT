@@ -1,3 +1,4 @@
+package Modele;
 
 public class ExceptAgenda extends Exception{
 	public ExceptAgenda(String parstr)
