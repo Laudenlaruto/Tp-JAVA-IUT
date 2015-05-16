@@ -33,7 +33,7 @@ public class PanelEvenement extends JPanel implements ActionListener {
 	JTextArea alieu = new JTextArea();
 	String [] heures = {"0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23"};
 	String [] minutes = {"0","10","20","30","40","50"};
-	JLabel debut = new JLabel("Début");
+	JLabel debut = new JLabel("Dï¿½but");
 	JComboBox heureDebut = new JComboBox(heures);
 	JLabel sep1 = new JLabel(":");
 	JComboBox minDebut = new JComboBox(minutes);
