@@ -73,7 +73,7 @@ public class Date implements Serializable
 		
 	public String toString()
 	{
-		return( chJourSemaine +" "+chJour+" "+chMoisAnnee+" "+chAn);
+		return(chJour+" "+chMoisAnnee+" "+chAn);
 	}
 	public int getDateAn()
 	{

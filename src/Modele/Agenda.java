@@ -8,16 +8,17 @@ import java.util.List;
 public class Agenda implements Serializable
 {
 	
-	private HashMap<String,ArrayList<Evt>> chMap;
+	private HashMap<Date,ArrayList<Evt>> chMap;
+	
 	public Agenda()
 	{
-		chMap = new HashMap<String,ArrayList<Evt>>();
+		chMap = new HashMap<Date,ArrayList<Evt>>();
 		
 	}
 	public String toString()
 	{
 		String message = new String();
-		for (String Cle : chMap.keySet()) {
+		for (Date Cle : chMap.keySet()) {
 			List<Evt> L = chMap.get(Cle);
 			message += Cle ;
 			for (Evt evt : L) {
@@ -50,7 +51,7 @@ public class Agenda implements Serializable
 		}*/
 		return(message);
 	}
-	public void ajout(String parCle, Evt parEvt)
+	public void ajout(Date parCle, Evt parEvt)
 	{
 		if (chMap.containsKey(parCle))
 		{
@@ -62,5 +63,11 @@ public class Agenda implements Serializable
 			newListe.add(parEvt);
 			chMap.put(parCle,newListe);
 		}
+	}
+	public HashMap<Date, ArrayList<Evt>> getChMap() {
+		return chMap;
+	}
+	public void setChMap(HashMap<Date, ArrayList<Evt>> chMap) {
+		this.chMap = chMap;
 	}
 }

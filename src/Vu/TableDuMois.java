@@ -1,18 +1,37 @@
 package Vu;
 
-import javax.swing.JTable;
+import java.util.List;
+
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
+import Modele.Agenda;
 import Modele.Date;
+import Modele.Evt;
+import Modele.EvtHelper;
 
-public class TableDuMois extends JTable{
-Date dateAuj = new Date();
+public class TableDuMois extends DefaultTableModel{
 	
-	public TableDuMois(){
+	public TableDuMois(Agenda chAgenda, Date parDate){
+		int nbJour = parDate.dernierJourDuMois(parDate.getDateMois(), parDate.getDateAn());
+		setColumnCount(nbJour);
+		setRowCount(10);
+		String [] entete = new String [nbJour];
 		
-	//	TableModel model = new DefaultTableModel(dateAuj.dernierJourDuMois(dateAuj.getDateMois(), dateAuj.getDateAn()), 10);
-		JTable table = new JTable(30,10);
+		for (int i = 0;i<nbJour;i++)
+			entete[i]=Integer.toString(i+1);
+		setColumnIdentifiers(entete);
 		
-	}
+		for (int i = 0; i < nbJour;i++ ){	
+			List<Evt>  list = EvtHelper.extractListEvt(chAgenda.getChMap(), parDate);
+			int j = 0;
+			for (Evt evt : list) {
+				if (evt.getEvtJour()==i)
+						setValueAt(evt, j, i-1);
+				j++;
+			}
+		}
+
+		}
+	
+	
 }

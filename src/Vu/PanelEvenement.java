@@ -14,7 +14,9 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.JTree;
 import javax.swing.border.Border;
 
 import Fichier.Fichier;
@@ -46,11 +48,13 @@ public class PanelEvenement extends JPanel implements ActionListener {
 	JPanel pan = new JPanel();
 	GridBagLayout Gridbag = new GridBagLayout();	
 	GridBagConstraints c = new GridBagConstraints(); 
-	JTextArea visualisationAgenda = new JTextArea();
+	//JTextArea visualisationAgenda = new JTextArea();
 	Date dateLocal = new Date();
 	File file = new File("Agenda");
+	JTable chTable = new JTable();
+	Date today = new Date();
 	public PanelEvenement(){
-		Date today = new Date();
+		
 		this.setLayout(new GridLayout(0,2));
 		pan.setLayout(Gridbag);
 		c.insets = new Insets(10,10,10,10);
@@ -118,22 +122,20 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		ades.setBorder(border);
 		pan.add(ades,c);
 		
-		this.add(pan);		visualisationAgenda.setEditable(false);
+		this.add(pan);		
+		//visualisationAgenda.setEditable(false);
 		//this.add(visualisationAgenda);
+		Fichier.reset(file);
+		agenda = (Agenda)Fichier.lecture(file);
 		
-		JScrollPane table = new JScrollPane(new TableDuMois());
+	
+		chTable.setModel(new TableDuMois(agenda, today));
+		chTable.setRowHeight(35);
+		chTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		JScrollPane table = new JScrollPane(chTable);
 		this.add(table);
 		
 		
-		
-		
-		
-		
-		
-		agenda = (Agenda)Fichier.lecture(file);
-		if (agenda != null)
-				visualisationAgenda.setText(Fichier.lecture(file).toString());
-	
 	}
 
 	
@@ -146,11 +148,11 @@ public class PanelEvenement extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent parEvt) {
 		if (parEvt.getSource() == ajout){
 			if ( atitre.getText().length() !=0 && alieu.getText().length() !=0  ){
-				agenda.ajout(dateLocal.toString(),new Evt(dateLocal, atitre.getText(),alieu.getText()));
+				agenda.ajout(dateLocal,new Evt(dateLocal, atitre.getText(),alieu.getText()));
 				Fichier.ecriture(file, agenda);
 			}
 		}
-		visualisationAgenda.setText(agenda.toString());
+		chTable.setModel(new TableDuMois(agenda, today));
 	}
 
 }

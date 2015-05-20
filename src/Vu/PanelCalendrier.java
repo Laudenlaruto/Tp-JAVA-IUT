@@ -45,7 +45,6 @@ public class PanelCalendrier extends JPanel implements ActionListener
 		panelEvementLocal = parPaneEve;
 		this.setLayout(new GridLayout(0,2));
 		PanelCal.setLayout( new BorderLayout());
-		//this.add(PanelCentre, BorderLayout.CENTER);
 		
 		PanelCentre.setLayout(Diapo);
 		
