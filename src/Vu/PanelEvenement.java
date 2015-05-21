@@ -1,6 +1,7 @@
 package Vu;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -28,7 +29,7 @@ import Modele.Evt;
 
 public class PanelEvenement extends JPanel implements ActionListener {
 	JLabel labelDate;
-	JButton ajout = new JButton("+");
+	JButton ajout = new JButton("Ajouter à L'agenda");
 	Agenda agenda = new Agenda();   
 	JLabel titre = new JLabel("Titre");
 	JTextArea atitre = new JTextArea();
@@ -67,9 +68,9 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		this.add(labelDate,c);
 		c.gridwidth = 1;
 		c.gridx = 4;
-		this.add(ajout,c);
-		ajout.setBackground(new Color(255,51,51));
-		ajout.addActionListener(this);
+		this.add(boutonReset,c);
+		boutonReset.addActionListener(this);
+		
 		//---------
 		
 		Border border = BorderFactory.createLineBorder(Color.BLUE, 1);
@@ -118,31 +119,31 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		this.add(des,c);
 		//-------
 		c.gridy=6;
-		c.gridwidth=6;
+		c.gridwidth=5;
 		ades.setBorder(border);
 		this.add(ades,c);
 		
 		c.gridy=7;
-		c.gridwidth=6;
-		this.add(boutonReset,c);
-		boutonReset.addActionListener(this);
-			
+		c.gridwidth=5;
+		this.add(ajout,c);
+		ajout.setBackground(new Color(255,51,51));
+		ajout.addActionListener(this);
+		
 		//visualisationAgenda.setEditable(false);
 		//this.add(visualisationAgenda);
 		//Fichier.reset(file);
 		agenda = (Agenda)Fichier.lecture(file);
 		
 		indexEvt = today.getDateMois();
-		//chTable.setRowHeight(35);
+		chTable.setRowHeight(35);
 		chTable.setModel(new TableDuMois(agenda,indexEvt));
 		chTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		
 		JScrollPane scroll = new JScrollPane(chTable);
-		//table.setPreferredSize());
+		scroll.setPreferredSize(new Dimension(600,10*39));
 		c.gridx=5;
 		c.gridy=0;
-		c.gridwidth=5;
-		c.gridheight=5;
+		c.gridwidth=0;
+		c.gridheight=0;
 		this.add(scroll,c);
 	
 		
@@ -169,6 +170,7 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		if (parEvt.getSource()== boutonReset){
 			Fichier.reset(file);
 			chTable.setModel(new TableDuMois(agenda, indexEvt));
+			
 		}
 	}
 

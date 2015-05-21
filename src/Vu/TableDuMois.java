@@ -21,7 +21,7 @@ public class TableDuMois extends DefaultTableModel{
 			entete[i]=Integer.toString(i+1);
 		setColumnIdentifiers(entete);
 		// TODO Ajouter une exception dans l'agenda pour limiter le nombre d'evt par jour a 10
-		for (int i = 0; i < nbJour;i++ ){	
+		for (int i = 0; i <= nbJour;i++ ){	
 			List<Evt>  list = EvtHelper.extractListEvt(chAgenda.getChMap(), moisCourant, i);	
 			int j = 0;
 			for (Evt evt : list) {

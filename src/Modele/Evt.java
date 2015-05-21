@@ -36,7 +36,7 @@ private static int chNbr = 0;
 		}
 		public String toString()
 		{
-	return ("\n"+ chTitre + " - " + chLieu);
+			return (chTitre + "\n"+ " - " +"\n"+ chLieu);
 		}
 		public String getTitre()
 		{
