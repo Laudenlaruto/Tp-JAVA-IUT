@@ -45,8 +45,7 @@ public class PanelEvenement extends JPanel implements ActionListener {
 	JLabel sep2 = new JLabel(":");
 	JComboBox minFin = new JComboBox(minutes);
 	JLabel des = new JLabel("Description");
-	JTextArea ades = new JTextArea(50,50);
-	JPanel pan = new JPanel();
+	JTextArea ades = new JTextArea(5,5);
 	JButton boutonReset = new JButton("Reset");
 	GridBagLayout Gridbag = new GridBagLayout();	
 	GridBagConstraints c = new GridBagConstraints(); 
@@ -55,10 +54,9 @@ public class PanelEvenement extends JPanel implements ActionListener {
 	File file = new File("Agenda");
 	JTable chTable = new JTable();
 	Date today = new Date();
+	int indexEvt;
 	public PanelEvenement(){
-		
-		this.setLayout(new GridLayout(0,2));
-		pan.setLayout(Gridbag);
+		this.setLayout(Gridbag);
 		c.insets = new Insets(10,10,10,10);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		//--------
@@ -66,10 +64,10 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		c.gridy=0;
 		c.gridwidth=3;
 		labelDate = new JLabel(today.toString());
-		pan.add(labelDate,c);
+		this.add(labelDate,c);
 		c.gridwidth = 1;
 		c.gridx = 4;
-		pan.add(ajout,c);
+		this.add(ajout,c);
 		ajout.setBackground(new Color(255,51,51));
 		ajout.addActionListener(this);
 		//---------
@@ -78,69 +76,76 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		c.gridy = 1;
 		c.gridx = 0;
 		c.gridwidth = 2;
-		pan.add(titre,c);
+		this.add(titre,c);
 		c.gridx = 2;
 		c.gridwidth = 3;
 		atitre.setBorder(border);
-		pan.add(atitre,c);
+		this.add(atitre,c);
 		//--------
 		c.gridy = 2;
 		c.gridx = 0;
 		c.gridwidth = 2;
-		pan.add(lieu,c);
+		this.add(lieu,c);
 		c.gridx = 2;
 		c.gridwidth = 3;
 		alieu.setBorder(border);
-		pan.add(alieu,c);
+		this.add(alieu,c);
 		//------------------------------------------------------------
 		c.gridwidth = 1;
 		c.gridy = 3;
 		c.gridx = 0;
-		pan.add(debut,c);
+		this.add(debut,c);
 		c.gridx = 2;
-		pan.add(heureDebut,c);
+		this.add(heureDebut,c);
 		c.gridx = 3;
-		pan.add(sep1,c);
+		this.add(sep1,c);
 		c.gridx=4;
-		pan.add(minDebut,c);
+		this.add(minDebut,c);
 		//------
 		c.gridy = 4;
 		c.gridx = 0;
-		pan.add(fin,c);
+		this.add(fin,c);
 		c.gridx = 2;
-		pan.add(heureFin,c);
+		this.add(heureFin,c);
 		c.gridx = 3;
-		pan.add(sep2,c);
+		this.add(sep2,c);
 		c.gridx=4;
-		pan.add(minFin,c);
+		this.add(minFin,c);
 		//------------
-		c.gridy =0;
-		c.gridx = 5;
+		c.gridy =5;
+		c.gridx = 0;
 		c.gridwidth=2;
-		pan.add(des,c);
+		this.add(des,c);
 		//-------
-		c.gridy=1;
-		c.gridheight=3;
-		c.gridwidth=0;
+		c.gridy=6;
+		c.gridwidth=6;
 		ades.setBorder(border);
-		pan.add(ades,c);
+		this.add(ades,c);
 		
-		c.gridy=4;
-		c.gridwidth=2;
-		pan.add(boutonReset,c);
+		c.gridy=7;
+		c.gridwidth=6;
+		this.add(boutonReset,c);
 		boutonReset.addActionListener(this);
-		this.add(pan);		
+			
 		//visualisationAgenda.setEditable(false);
 		//this.add(visualisationAgenda);
 		//Fichier.reset(file);
 		agenda = (Agenda)Fichier.lecture(file);
 		
-	
-		chTable.setModel(new TableDuMois(agenda,today));
-		chTable.setRowHeight(35);
+		indexEvt = today.getDateMois();
+		//chTable.setRowHeight(35);
+		chTable.setModel(new TableDuMois(agenda,indexEvt));
 		chTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-		JScrollPane table = new JScrollPane(chTable);
-		this.add(table,BorderLayout.EAST);
+		
+		JScrollPane scroll = new JScrollPane(chTable);
+		//table.setPreferredSize());
+		c.gridx=5;
+		c.gridy=0;
+		c.gridwidth=5;
+		c.gridheight=5;
+		this.add(scroll,c);
+	
+		
 		
 		
 	}
@@ -157,11 +162,13 @@ public class PanelEvenement extends JPanel implements ActionListener {
 			if ( atitre.getText().length() !=0 && alieu.getText().length() !=0  ){
 				agenda.ajout(dateLocal,new Evt(dateLocal, atitre.getText(),alieu.getText()));
 				Fichier.ecriture(file, agenda);
+				chTable.setModel(new TableDuMois(agenda, dateLocal.getDateMois()));	
 			}
-		chTable.setModel(new TableDuMois(agenda, today));	
+			
 		}
 		if (parEvt.getSource()== boutonReset){
 			Fichier.reset(file);
+			chTable.setModel(new TableDuMois(agenda, indexEvt));
 		}
 	}
 

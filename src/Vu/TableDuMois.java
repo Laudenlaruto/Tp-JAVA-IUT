@@ -11,8 +11,8 @@ import Modele.EvtHelper;
 
 public class TableDuMois extends DefaultTableModel{
 	
-	public TableDuMois(Agenda chAgenda, Date parDate){
-		int nbJour = parDate.dernierJourDuMois(parDate.getDateMois(), parDate.getDateAn());
+	public TableDuMois(Agenda chAgenda, int moisCourant){
+		int nbJour = Date.dernierJourDuMois(moisCourant, 2015);
 		setColumnCount(nbJour);
 		setRowCount(10);
 		String [] entete = new String [nbJour];
@@ -22,7 +22,7 @@ public class TableDuMois extends DefaultTableModel{
 		setColumnIdentifiers(entete);
 		// TODO Ajouter une exception dans l'agenda pour limiter le nombre d'evt par jour a 10
 		for (int i = 0; i < nbJour;i++ ){	
-			List<Evt>  list = EvtHelper.extractListEvt(chAgenda.getChMap(), parDate);
+			List<Evt>  list = EvtHelper.extractListEvt(chAgenda.getChMap(), moisCourant, i);	
 			int j = 0;
 			for (Evt evt : list) {
 				if (evt.getEvtJour()==i)

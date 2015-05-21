@@ -1,7 +1,7 @@
 package Vu;
-import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.JPanel;
 
@@ -18,7 +18,8 @@ public class PanelFils extends JPanel{
 		this.add(panelCalendrier,c);
 		c.gridx = 0;
 		c.gridy = 1;
-		c.gridwidth = 2;
+		c.gridwidth = 4;
+		c.gridheight=5;
 		this.add(panelEvenement,c);
 	}
 

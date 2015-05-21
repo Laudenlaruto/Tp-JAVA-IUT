@@ -92,7 +92,10 @@ public class PanelCalendrier extends JPanel implements ActionListener
 				index --;
 			else 
 				index = Titres.length-1;
+			
+			panelEvementLocal.chTable.setModel(new TableDuMois(panelEvementLocal.agenda, index +1));
 			NomMois.setText(Titres[index]);
+			panelEvementLocal.indexEvt=index+1;
 		}
 		else if (parEvt.getSource() == bouton2){
 			Diapo.next(PanelCentre);
@@ -100,7 +103,10 @@ public class PanelCalendrier extends JPanel implements ActionListener
 				index ++;
 			else 
 				index = 0;
+			
+			panelEvementLocal.chTable.setModel(new TableDuMois(panelEvementLocal.agenda, index+1 ));
 			NomMois.setText(Titres[index]);
+			panelEvementLocal.indexEvt=index+1;
 		}
 		
 		else
@@ -114,9 +120,6 @@ public class PanelCalendrier extends JPanel implements ActionListener
 			oldBouton = boutonDate;
 		}
 		
-	}
-	public int getIndex(){
-		return index;
 	}
 }
 

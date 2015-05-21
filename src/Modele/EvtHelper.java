@@ -6,11 +6,12 @@ import java.util.List;
 public class EvtHelper {
 
 	
-	public static List<Evt> extractListEvt(HashMap<Date,ArrayList<Evt>> map,Date parDate){
+	public static List<Evt> extractListEvt(HashMap<Date,ArrayList<Evt>> map,int moisCourant, int jourCourant){
 		for (Date Cle : map.keySet()) {
 			
-			if (Cle.getDateMois() == parDate.getDateMois()){
-				return map.get(Cle);
+			if (Cle.getDateMois() == moisCourant){
+				if (Cle.getDateJour()== jourCourant)
+					return map.get(Cle);
 			}
 		}
 		
