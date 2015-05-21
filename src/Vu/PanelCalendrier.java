@@ -114,7 +114,10 @@ public class PanelCalendrier extends JPanel implements ActionListener
 			oldBouton = boutonDate;
 		}
 		
-	}		
+	}
+	public int getIndex(){
+		return index;
+	}
 }
 
 	

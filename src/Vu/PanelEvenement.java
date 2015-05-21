@@ -1,4 +1,5 @@
 package Vu;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -35,7 +36,7 @@ public class PanelEvenement extends JPanel implements ActionListener {
 	JTextArea alieu = new JTextArea();
 	String [] heures = {"0","1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23"};
 	String [] minutes = {"0","10","20","30","40","50"};
-	JLabel debut = new JLabel("Dï¿½but");
+	JLabel debut = new JLabel("Début");
 	JComboBox heureDebut = new JComboBox(heures);
 	JLabel sep1 = new JLabel(":");
 	JComboBox minDebut = new JComboBox(minutes);
@@ -44,8 +45,9 @@ public class PanelEvenement extends JPanel implements ActionListener {
 	JLabel sep2 = new JLabel(":");
 	JComboBox minFin = new JComboBox(minutes);
 	JLabel des = new JLabel("Description");
-	JTextArea ades = new JTextArea(5,5);
+	JTextArea ades = new JTextArea(50,50);
 	JPanel pan = new JPanel();
+	JButton boutonReset = new JButton("Reset");
 	GridBagLayout Gridbag = new GridBagLayout();	
 	GridBagConstraints c = new GridBagConstraints(); 
 	//JTextArea visualisationAgenda = new JTextArea();
@@ -112,28 +114,33 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		c.gridx=4;
 		pan.add(minFin,c);
 		//------------
-		c.gridy =5;
-		c.gridx = 0;
+		c.gridy =0;
+		c.gridx = 5;
+		c.gridwidth=2;
 		pan.add(des,c);
 		//-------
-		c.gridy = 6;
+		c.gridy=1;
 		c.gridheight=3;
-		c.gridwidth=5;
+		c.gridwidth=0;
 		ades.setBorder(border);
 		pan.add(ades,c);
 		
+		c.gridy=4;
+		c.gridwidth=2;
+		pan.add(boutonReset,c);
+		boutonReset.addActionListener(this);
 		this.add(pan);		
 		//visualisationAgenda.setEditable(false);
 		//this.add(visualisationAgenda);
-		Fichier.reset(file);
+		//Fichier.reset(file);
 		agenda = (Agenda)Fichier.lecture(file);
 		
 	
-		chTable.setModel(new TableDuMois(agenda, today));
+		chTable.setModel(new TableDuMois(agenda,today));
 		chTable.setRowHeight(35);
 		chTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		JScrollPane table = new JScrollPane(chTable);
-		this.add(table);
+		this.add(table,BorderLayout.EAST);
 		
 		
 	}
@@ -151,8 +158,11 @@ public class PanelEvenement extends JPanel implements ActionListener {
 				agenda.ajout(dateLocal,new Evt(dateLocal, atitre.getText(),alieu.getText()));
 				Fichier.ecriture(file, agenda);
 			}
+		chTable.setModel(new TableDuMois(agenda, today));	
 		}
-		chTable.setModel(new TableDuMois(agenda, today));
+		if (parEvt.getSource()== boutonReset){
+			Fichier.reset(file);
+		}
 	}
 
 }
