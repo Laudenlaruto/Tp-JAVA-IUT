@@ -30,8 +30,13 @@ public class TableDuMois extends DefaultTableModel{
 				j++;
 			}
 		}
-
+	
 		}
+	public boolean isCellEditable(int NbLigne, int NbCollomn){
+		
+		
+		return false;
+	}
 	
 	
 }

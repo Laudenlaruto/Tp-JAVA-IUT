@@ -93,7 +93,7 @@ public class PanelCalendrier extends JPanel implements ActionListener
 			else 
 				index = Titres.length-1;
 			
-			panelEvementLocal.chTable.setModel(new TableDuMois(panelEvementLocal.agenda, index +1));
+			panelEvementLocal.chTable.setModel(new TableDuMois(panelEvementLocal.agenda, index +1));// TODO créer un seter
 			NomMois.setText(Titres[index]);
 			panelEvementLocal.indexEvt=index+1;
 		}
@@ -104,7 +104,7 @@ public class PanelCalendrier extends JPanel implements ActionListener
 			else 
 				index = 0;
 			
-			panelEvementLocal.chTable.setModel(new TableDuMois(panelEvementLocal.agenda, index+1 ));
+			panelEvementLocal.chTable.setModel(new TableDuMois(panelEvementLocal.agenda, index+1 ));// TODO créer un seter
 			NomMois.setText(Titres[index]);
 			panelEvementLocal.indexEvt=index+1;
 		}

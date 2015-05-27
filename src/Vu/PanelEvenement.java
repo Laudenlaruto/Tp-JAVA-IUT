@@ -136,7 +136,9 @@ public class PanelEvenement extends JPanel implements ActionListener {
 		
 		indexEvt = today.getDateMois();
 		chTable.setRowHeight(35);
-		chTable.setModel(new TableDuMois(agenda,indexEvt));
+		
+		chTable.setModel(new TableDuMois(agenda,indexEvt)); // TODO créer methode apart
+		//chTable.getColumnModel().getColumn(0).setPreferredWidth(100);
 		chTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		JScrollPane scroll = new JScrollPane(chTable);
 		scroll.setPreferredSize(new Dimension(600,10*39));
